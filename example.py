@@ -1,6 +1,4 @@
-import pygame
-import sys
-import pyperclip  # Required for clipboard functionality
+from Dependencies import *
 
 # Initialize Pygame
 pygame.init()
