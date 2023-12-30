@@ -24,3 +24,8 @@ class StateMachine:
 
     def process_ai(self, params, dt):
         self.current['processAI'](params, dt)
+
+# #this is our state machine
+# gStateMachine = StateMachine({
+#     'Begin': BeginState
+# })
