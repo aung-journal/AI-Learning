@@ -7,12 +7,15 @@ sys.path.insert(0, libs_folder)
 
 # Import necessary libraries
 import pygame
-from pygame import mixer
 import pyperclip
-from src.services.timer import *
+import tween # this is our actual tweening class
 
 ## SUB_LIBRARIES OF PYGAME
 # (No need to import again since pygame and mixer are already imported)
+from pygame import mixer
+
+## SERVICES
+from src.services.timer import * # tweening and timer classes
 
 ## OTHER FILES(VARs, CLASSEs)
 from src.constants import *
@@ -24,13 +27,14 @@ from src.states.gStateStack import *
 from src.states.BaseState import *
 
 ## MUSIC
+mixer.init()
 gSounds = {
-    'start': 'sounds/music.mp3'
+    'music': pygame.mixer.Sound('sounds/music.mp3')
 }
 
 ## Art
 gTextures = {
-    'logo': 'graphics/logo.jpeg'
+    'logo': pygame.image.load('graphics/logo.jpeg')
 }
 
 # # Import modules dynamically

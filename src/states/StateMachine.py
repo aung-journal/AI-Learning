@@ -1,7 +1,7 @@
 class StateMachine:
     def __init__(self, states):
         self.empty = {
-            'render': lambda: None,
+            'render': lambda screen: None,
             'update': lambda dt: None,
             'processAI': lambda params, dt: None,
             'enter': lambda: None,
@@ -19,13 +19,8 @@ class StateMachine:
     def update(self, dt):
         self.current['update'](dt)
 
-    def render(self):
-        self.current['render']()
+    def render(self, screen):
+        self.current['render'](screen)
 
     def process_ai(self, params, dt):
         self.current['processAI'](params, dt)
-
-# #this is our state machine
-# gStateMachine = StateMachine({
-#     'Begin': BeginState
-# })

@@ -1,5 +1,6 @@
 class BaseState:
-    def __init__(self):
+    def __init__(self, g_state_machine):
+        self.gStateMachine = g_state_machine
         pass
 
     def enter(self):
@@ -11,5 +12,5 @@ class BaseState:
     def update(self, dt):
         pass
 
-    def render(self):
+    def render(self, screen):
         pass
