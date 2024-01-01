@@ -1,4 +1,4 @@
-import pygame
+from Dependencies import *
 
 class Game(object):
     def __init__(self, screen, states, start_state):
@@ -12,6 +12,10 @@ class Game(object):
 
     def event_loop(self):
         for event in pygame.event.get():
+            #the code that makes a program quit
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
             self.state.get_event(event)
 
     def flip_state(self):
@@ -21,5 +25,22 @@ class Game(object):
         self.state_name = next_state
         persistent = self.state.persistent
         self.state = self.states[self.state_name]
-        self.state.startup(persistent
-                           )
+        self.state.startup(persistent)
+
+    def update(self, dt):
+        if self.state.quit:
+            self.done = True
+        elif self.state.done:
+            self.flip_state()
+        self.state.update(dt)
+
+    def draw(self):
+        self.state.draw(self.screen)
+
+    def run(self):
+        while not self.done:
+            dt = self.clock.tick(self.fps)
+            self.event_loop()
+            self.update(dt)
+            self.draw()
+            pygame.display.update()
